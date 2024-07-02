@@ -1,0 +1,6 @@
+@Bunker_API_HostAddress = http://192.168.0.126:80
+
+GET {{Bunker_API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
