@@ -9,20 +9,19 @@ namespace Bunker_API.Controllers
 	{
 		private readonly ILogger<UserController> _logger;
 
+		BunkerContext _context = new();
+
 		public UserController(ILogger<UserController> logger)
 		{
 			_logger = logger;
 		}
 
 		[HttpGet(Name = "GetUser")]
-		public IEnumerable<User> Get()
+		public User Get()
 		{
-			return Enumerable.Range(1, 5).Select(index => new User
-			{
-				ID = index,
-				UserName = $"User{index}"
-			})
-			.ToArray();
+			User user = _context.Users.ToList().FirstOrDefault();
+
+			return user;
 		}
 	}
 }

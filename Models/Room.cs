@@ -1,8 +1,11 @@
-﻿namespace Bunker_API.Models
+﻿using System;
+using System.Collections.Generic;
+
+namespace Bunker_API;
+
+public partial class Room
 {
-    public class Room
-    {
-        public int ID { get; set; }
-        public bool IsActive { get; set; }
-    }
+    public int Id { get; set; }
+
+    public bool Isactive { get; set; }
 }

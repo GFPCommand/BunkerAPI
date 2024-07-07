@@ -1,5 +1,4 @@
-﻿using Bunker_API.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Bunker_API.Controllers
 {
@@ -9,6 +8,8 @@ namespace Bunker_API.Controllers
 	{
 		private readonly ILogger<UserController> _logger;
 
+		BunkerContext _context = new();
+
 		public RoomController(ILogger<UserController> logger)
 		{
 			_logger = logger;
@@ -17,16 +18,9 @@ namespace Bunker_API.Controllers
 		[HttpGet(Name = "GetRoom")]
 		public Room Get(int id)
 		{
-			// get this from DB
-			Room room = new()
-			{
-				ID = 5,
-				IsActive = true
-			};
+			Room room = _context.Rooms.ToList().FirstOrDefault();
 
-			if (room.ID == id && room.IsActive)
-				return room;
-			else return new Room() { ID = -1 };
+			return room;
 		}
 	}
 }
